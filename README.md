@@ -81,3 +81,11 @@ tailwind css
 sign in and signup authentication using firebase with validation
 redux to store data
 
+redirecting the login page to browser - if logged in && vice versa
+
+- using trakt API to use movies list
+- stored movie trailer and others movies in redux
+- custom hook to fetch movies and return to browser to use
+- youtube iframe to auto play trailer on browser page
+- small play and info btn on top of that trailer
+

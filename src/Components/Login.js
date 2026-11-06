@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import { Validation } from '../Utils/Validation';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../Utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { addUser } from '../Utils/userSlice';
@@ -15,7 +14,6 @@ function Login() {
     const email = useRef(null)
     const password = useRef(null);
     const name = useRef("");
-    const navigate = useNavigate();
     const dispatch = useDispatch()
     // const handleValidation = () =>{
     //     console.log(email)
@@ -99,8 +97,6 @@ function Login() {
 
             console.log("Authenticated user:", userCredential.user);
 
-            // Navigate only after successful authentication
-            navigate("/browser");
 
         } catch (error) {
             setErrorMessage(error.message);
@@ -108,24 +104,16 @@ function Login() {
         }
     };
   return (
-    <div className="relative min-h-screen">
+    <div className="absolute inset-0 min-h-screen">
 
       {/* Background Image */}
       <img
         src="https://assets.nflxext.com/ffe/siteui/vlv3/5aa70728-e223-472f-9230-babd8f6ba166/web/IN-en-20261019-TRIFECTA-perspective_79fa76c2-2cb2-4d20-8de2-f696f3b6131e_large.jpg"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover z-5"
         alt="Netflix Background"
       />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-b from-black/90 via-black/40 to-black/80"></div>
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80"></div>
-
-      {/* Netflix Logo */}
-      <img
-        src="https://occ.a.nflxso.net/dnmt/api/v6/iL4oJVDYZ8KLSrJ6eG2OwtghbfQ/AAAAAVIENVPMEM3Kn4hVzJseX4N8xPjtBDIpwuFDucWksdxQZ8Ss6Xf8U_vt7ThYYfRmzq0x1CS3nOwTGyVrgADvwfB_tPiK_liS2RjvI40RJSzbKRk-o8b3nCxHfCCnBsyB2XBB9_vRoSmN.svg"
-        className="absolute left-8 top-5 z-10 w-28 h-auto"
-        alt="Netflix Logo"
-      />
 
       {/* Login Form */}
       <div className="relative z-10 flex min-h-screen items-center justify-center">
